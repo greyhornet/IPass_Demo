@@ -1,4 +1,12 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Analyze_FIle" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1057,2866" sap2010:WorkflowViewState.IdRef="Analyze_FIle_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Analyze_FIle" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="FIlePath" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1162,3262</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Analyze_FIle_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -36,7 +44,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="18">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -55,36 +63,37 @@
       <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
       <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Analyze_FIle" sap:VirtualizedContainerService.HintSize="1067,2661" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Analyze_FIle" sap:VirtualizedContainerService.HintSize="1067,3057" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="FIlePath" />
       <Variable x:TypeArguments="x:Int32" Name="pages" />
       <Variable x:TypeArguments="x:Int32" Name="count" />
       <Variable x:TypeArguments="x:Int32" Name="UniqueLP" />
       <Variable x:TypeArguments="x:String" Name="filename" />
       <Variable x:TypeArguments="x:String" Name="filesfolder" />
       <Variable x:TypeArguments="x:Boolean" Name="filesfolderexists" />
-      <Variable x:TypeArguments="x:String" Name="preppedfiles">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">C:\Users\user\Documents\UiPath\Ipass_Demo\PreppedFiles</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="C:\Users\user\Documents\UiPath\Ipass_Demo\PreppedFiles" Name="preppedfiles" />
+      <Variable x:TypeArguments="x:String" Name="processedfilesfolder" />
+      <Variable x:TypeArguments="x:Boolean" Name="processedfilesfolderexists" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="1025,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-      <Assign.To>
-        <OutArgument x:TypeArguments="x:String">[FIlePath]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="x:String">C:\Users\user\Documents\agencies\ipass\scn_89_(in)_i_pass-amazon_(24)_november_10_(bm).pdf</InArgument>
-      </Assign.Value>
-    </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="1025,60" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[filename]</OutArgument>
@@ -98,13 +107,27 @@
         <OutArgument x:TypeArguments="x:String">[filesfolder]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">["C:\Users\user\Documents\UiPath\Ipass_Demo\SplitFiles\"+filename]</InArgument>
+        <InArgument x:TypeArguments="x:String">["SplitFiles\"+filename]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1025,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[processedfilesfolder]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["ProcessedFiles\"+filename]</InArgument>
       </Assign.Value>
     </Assign>
     <ui:PathExists DisplayName="Path Exists" Exists="[filesfolderexists]" sap:VirtualizedContainerService.HintSize="1025,89" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="[filesfolder]" PathType="Folder" />
+    <ui:PathExists DisplayName="Path Exists" Exists="[processedfilesfolderexists]" sap:VirtualizedContainerService.HintSize="1025,89" sap2010:WorkflowViewState.IdRef="PathExists_3" Path="[processedfilesfolder]" PathType="Folder" />
     <If Condition="[filesfolderexists = False]" sap:VirtualizedContainerService.HintSize="1025,227" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
         <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[filesfolder]" />
+      </If.Then>
+    </If>
+    <If Condition="[processedfilesfolderexists = False]" sap:VirtualizedContainerService.HintSize="1025,227" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[processedfilesfolder]" />
       </If.Then>
     </If>
     <upap:GetPDFPageCount DisplayName="Get PDF Page Count" FileName="[FIlePath]" sap:VirtualizedContainerService.HintSize="1025,59" sap2010:WorkflowViewState.IdRef="GetPDFPageCount_1" PageCount="[pages]" />
@@ -145,7 +168,7 @@
               <InArgument x:TypeArguments="x:String">[filesfolder+"\"+filename+UniqueLP.ToString("D2")]</InArgument>
             </Assign.Value>
           </Assign>
-          <If Condition="[readText.IndexOf(&quot;FIRST NOTICE&quot;) = -1]" sap:VirtualizedContainerService.HintSize="947,821" sap2010:WorkflowViewState.IdRef="If_1">
+          <If Condition="[readText.IndexOf(&quot;NOTICE&quot;) = -1 Or readText.IndexOf(&quot;ACCOUNT&quot;) = -1]" sap:VirtualizedContainerService.HintSize="947,821" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
               <Sequence sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_3">
                 <sap:WorkflowViewStateService.ViewState>
